@@ -3,10 +3,14 @@ package com.vladmikhayl.jpa.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.util.List;
+
+//import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 //@Table(name = "AUTHOR_TBL")
 public class Author {
@@ -40,15 +44,18 @@ public class Author {
 
     private int age;
 
-    @Column(
-            updatable = false,
-            nullable = false
-    )
-    private LocalDateTime createdAt;
+//    @Column(
+//            updatable = false,
+//            nullable = false
+//    )
+//    private LocalDateTime createdAt;
+//
+//    @Column(
+//            insertable = false
+//    )
+//    private LocalDateTime lastModifiedAt;
 
-    @Column(
-            insertable = false
-    )
-    private LocalDateTime lastModifiedAt;
+    @ManyToMany(mappedBy = "authors")
+    private List<Course> courses;
 
 }
