@@ -1,7 +1,9 @@
 package com.vladmikhayl.jpa;
 
 import com.vladmikhayl.jpa.models.Author;
+import com.vladmikhayl.jpa.models.recources.Video;
 import com.vladmikhayl.jpa.repositories.AuthorRepository;
+import com.vladmikhayl.jpa.repositories.VideoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +18,8 @@ public class JpaApplication {
 
 	@Bean
 	public CommandLineRunner commandLineRunner(
-			AuthorRepository repository
+			AuthorRepository authorRepository,
+			VideoRepository videoRepository
 	) {
 		return args -> {
 			Author author = Author.builder()
@@ -25,7 +28,13 @@ public class JpaApplication {
 					.age(20)
 					.email("vlad@yandex.ru")
 					.build();
-			repository.save(author);
+			authorRepository.save(author);
+
+			Video video = Video.builder()
+					.name("abc")
+					.length(5)
+					.build();
+			videoRepository.save(video);
 		};
 	}
 

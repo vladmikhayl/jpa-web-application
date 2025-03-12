@@ -2,21 +2,23 @@ package com.vladmikhayl.jpa.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 //import java.time.LocalDateTime;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
 //@Table(name = "AUTHOR_TBL")
-public class Author {
+public class Author extends BaseEntity {
 
-    @Id
-    @GeneratedValue
+    // @Id
+    // @GeneratedValue
     /*@GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "author_sequence"
@@ -26,7 +28,7 @@ public class Author {
             sequenceName = "author_sequence",
             allocationSize = 1
     )*/
-    private Integer id;
+    // private Integer id;
 
     @Column(
             name = "f_name",
